@@ -14,7 +14,7 @@ Goal: Play m3u8 media on HomeAssistant
 * Autoplay:
     * test2.html (autoplay disable)
 
-## Test ##
+## Test player ##
 * Open with browser:
      * http://'homeassistant'/local/test.html
 
