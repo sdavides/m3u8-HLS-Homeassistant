@@ -16,7 +16,7 @@ Goal: Play m3u8 media on HomeAssistant
 
 ## Test player ##
 * Open with browser:
-     * http://'homeassistant'/local/test.html
+     * http://'homeassistant'/local/m3u8/test.html
 
 
  ## Result ##
