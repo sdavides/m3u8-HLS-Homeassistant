@@ -21,3 +21,12 @@ Goal: Play m3u8 media on HomeAssistant
 
  ## Result ##
 ![immagine](https://github.com/sdavides/m3u8-HLS-Homeassistant/assets/31100253/efd8183d-961e-45bc-abfd-000730ebb154)
+
+
+## See also ##
+
+[AqaraPOST-Homeassistant](https://github.com/sdavides/AqaraPOST-Homeassistant/)
+[EPGItaly-Homeassistant](https://github.com/sdavides/EPGItaly-Homeassistant)
+
+     
+
