@@ -5,20 +5,18 @@ Goal: Play m3u8 media on HomeAssistant
 * Copy and paste m3u8 folder on /config/www/ 
 * Setting m3u url inside "test.html"
 * Create card webpage on HomeAssistant
-
-  
-      ```bash
+     
       type: iframe
       url: /local/m3u8/test.html
       aspect_ratio: 50%'
-      ```
+      
 ## TIPS ##
 * Autoplay:
     * test2.html (autoplay disable)
 
 ## Test ##
 * Open with browser:
-     * http://<homeassistant>/local/test.html
+     * http://'homeassistant'/local/test.html
 
 
  ## Result ##
