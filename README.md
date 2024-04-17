@@ -2,7 +2,7 @@
 Goal: Play m3u8 media on HomeAssistant
 
 ## Install ##
-* Copy and paste m3u8 folder on /config/www/ 
+* Download "m3u8" folder on /config/www/ 
 * Setting m3u url inside "test.html"
 * Create card webpage on HomeAssistant
      
