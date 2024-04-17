@@ -16,6 +16,10 @@ Goal: Play m3u8 media on HomeAssistant
 * Autoplay:
     * test2.html (autoplay disable)
 
+## Test ##
+* Open with browser:
+     * http://<homeassistant>/local/test.html
+
 
  ## Result ##
 ![immagine](https://github.com/sdavides/m3u8-HLS-Homeassistant/assets/31100253/efd8183d-961e-45bc-abfd-000730ebb154)
