@@ -14,7 +14,7 @@ Goal: Play m3u8 media on HomeAssistant
       ```
 ## TIPS ##
 * Autoplay:
-    * test2.html (autoplay enable)
+    * test2.html (autoplay disable)
 
 
  ## Result ##
