@@ -26,7 +26,8 @@ Goal: Play m3u8 media on HomeAssistant
 ## See also ##
 
 [AqaraPOST-Homeassistant](https://github.com/sdavides/AqaraPOST-Homeassistant/)
-[EPGItaly-Homeassistant](https://github.com/sdavides/EPGItaly-Homeassistant)
+
+[EPGItaly-Homeassistant](https://github.com/sdavides/EPGItaly-Homeassistant/)
 
      
 
