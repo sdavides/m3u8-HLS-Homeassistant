@@ -13,6 +13,7 @@ Goal: Play m3u8 media on HomeAssistant
 ## TIPS ##
 * Autoplay:
     * test2.html (autoplay disable)
+       * remove autoplay on \<video\> tag
 * Poster player:
     * add poster="/IMAGE.png" on \<video\> tag
 
