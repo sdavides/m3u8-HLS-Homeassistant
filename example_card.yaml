@@ -1,8 +1,0 @@
-type: vertical-stack
-cards:
-  - type: iframe
-    url: /local/m3u8/test.html
-    aspect_ratio: 50%
-  - type: iframe
-    url: /local/m3u8/test2.html
-    aspect_ratio: 50%
