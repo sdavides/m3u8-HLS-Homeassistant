@@ -2,28 +2,46 @@
 Goal: Play m3u8 media on HomeAssistant
 
 ## Install ##
-* Download "m3u8" folder on /config/www/ 
-* Edit m3u url inside "test.html"
-* Create card webpage on HomeAssistant
-     
-      type: iframe
-      url: /local/m3u8/test.html
-      aspect_ratio: 50%'
+* Download  /config/www/
+
+     * "m3u8_player" playlist m3u
+  
+     * "m3u8" single video 
+  
+* player playlist
+ 
+   Edit file.m3u playlist
+ 
+  
+           type: iframe
+           url: /local/m3u8_player/index.html
+           aspect_ratio: 100%'
+
+
+* single video
+ 
+   Edit url src on index.html
+ 
+  
+           type: iframe
+           url: /local/m3u8/index.html
+           aspect_ratio: 50%'
       
 ## TIPS ##
 * Autoplay:
-    * test2.html (autoplay disable)
-       * remove autoplay on \<video\> tag
-* Poster player:
+    * remove autoplay on \<video\> tag
+* Poster:
     * add poster="/IMAGE.png" on \<video\> tag
 
 ## Test player ##
 * Open with browser:
-     * http://'homeassistant'/local/m3u8/test.html
+     * http://'homeassistant'/local/m3u8/index.html
 
 
  ## Result ##
-![immagine](https://github.com/sdavides/m3u8-HLS-Homeassistant/assets/31100253/efd8183d-961e-45bc-abfd-000730ebb154)
+![immagine](https://github.com/user-attachments/assets/85d21159-13e2-4f85-8a0d-615381adbd87)
+
+
 
 
 ## See also ##
