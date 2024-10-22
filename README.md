@@ -1,8 +1,11 @@
 # m3u8-HLS-Homeassistant
 Goal: Play m3u8 media on HomeAssistant
 
+  * Playlist or Video
+
+
 ## Install ##
-* Download  /config/www/
+* Download folder on /config/www/
 
      * "m3u8_player" playlist m3u
   
@@ -35,6 +38,7 @@ Goal: Play m3u8 media on HomeAssistant
 
 ## Test player ##
 * Open with browser:
+     * http://'homeassistant'/local/m3u8_player/index.html
      * http://'homeassistant'/local/m3u8/index.html
 
 
