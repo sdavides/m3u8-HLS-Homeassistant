@@ -1,0 +1,100 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Node-RED
+# Runs the Nginx daemon
+# ==============================================================================
+
+bashio::log.info "Starting NGinx..."
+
+
+if  bashio::fs.file_exists '/config/file.m3u'; then
+    bashio::log.info "file.m3u already exist, the file will not be updated from config"
+	
+else
+	cp /etc/nginx/m3u8_player/file.m3u /config/ &&  bashio::log.info "default file.m3u create ok..." || bashio::log.info "default file.m3u create error..."
+	
+	if bashio::config.has_value 'url_m3u'; then
+
+		if bashio::config.true "list_video"; then
+		
+		url_m3u=$(bashio::config 'url_m3u')
+	
+		wget -q $url_m3u --output-document=/config/file.m3u && dos2unix  /config/file.m3u &&  bashio::log.info "download file.m3u ok..." ||  bashio::log.info "download file.m3u error..."
+    
+		bashio::log.info "M3u URL list set"
+	
+		else
+		
+			url_m3u=$(bashio::config 'url_m3u')
+	
+			echo "#EXTM3U" > /config/file.m3u
+			echo "#EXTINF:-1,video01" >> /config/file.m3u
+			echo $url_m3u >> /config/file.m3u
+			bashio::log.info "M3u URL single video set"
+
+		fi
+	
+	else
+	bashio::log.info "M3u URL not set..."
+
+	fi
+	
+fi
+
+
+if bashio::config.true "searchInput"; then
+
+    sed -i "s/searchInput\" style=\"display:none\"/searchInput\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "searchInput error..."
+    sed -i "s/searchButton\" style=\"display:none\"/searchButton\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "searchButton error..."
+    sed -i "s/resetButton\" style=\"display:none\"/resetButton\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "resetButton error..."
+	
+	else
+	bashio::log.info "searchInput hidden"
+	bashio::log.info "searchButton hidden"
+	bashio::log.info "resetButton hidden"
+fi
+	
+if bashio::config.true "channelSelect"; then
+
+    sed -i "s/channelSelect\" style=\"display:none\"/channelSelect\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "channelSelect error..."
+
+	else
+	bashio::log.info "channelSelect hidden"
+fi
+
+if bashio::config.true "fileInput"; then
+
+    sed -i "s/fileInput\" style=\"display:none\"/fileInput\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "fileInput error..."
+	sed -i "s/loadFileButton\" style=\"display:none\"/loadFileButton\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "loadFileButton error..."
+	
+	else
+	bashio::log.info "fileInput hidden"
+fi
+
+if bashio::config.true "urlInput"; then
+
+    sed -i "s/urlInput\" style=\"display:none\"/urlInput\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "urlInput error..."
+	sed -i "s/loadUrlButton\" style=\"display:none\"/loadUrlButton\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "loadUrlButton error..."
+
+	else
+	bashio::log.info "urlInput hidden"
+	bashio::log.info "loadUrlButton hidden"
+fi
+
+if bashio::config.true "remoteUrlInput"; then
+
+    sed -i "s/remoteUrlInput\" style=\"display:none\"/remoteUrlInput\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "remoteUrlInput error..."
+	sed -i "s/loadRemoteUrlButton\" style=\"display:none\"/loadRemoteUrlButton\" /g"  /etc/nginx/m3u8_player/index.html || bashio::log.info "loadRemoteUrlButton error..."
+
+	else
+	bashio::log.info "remoteUrlInput hidden"
+	bashio::log.info "loadRemoteUrlButton hidden"
+fi
+
+	
+
+cp /config/file.m3u /etc/nginx/m3u8_player/file.m3u  && bashio::log.info "Started... the matrix has you, follow the white rabbit" || bashio::log.info "Started error"
+
+
+
+exec nginx
