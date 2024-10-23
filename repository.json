@@ -1,0 +1,6 @@
+{
+  "name": "m3u8-HLS-Homeassistant",
+  "udev": true,
+  "url": "https://github.com/sdavides/m3u8-HLS-Homeassistant",
+  "maintainer": "sdavides"
+}
