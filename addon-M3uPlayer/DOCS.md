@@ -21,7 +21,6 @@ Add custom component remote repository:
       
      * disable=video
 
-    
   * http URL m3u
 
   * Enable/Disable fields
@@ -37,4 +36,8 @@ Add custom component remote repository:
   * Update config
 
   * Restart addon
+
  
+## Result
+
+![immagine](https://github.com/user-attachments/assets/4d431123-cc07-4aec-bd4a-88bc0c2f7635)
