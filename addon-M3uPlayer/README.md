@@ -1,44 +1,43 @@
-# AqaraPost_[Node-RED] addon HomeAssistant
+# M3uPlayer addon HomeAssistant
 
-  AqaraPost_[Node-RED] - NodeRed mod for AqaraPost-Homeassistant.
+  M3uPlayer Homeassistant.
 
-  *Parallel container NodeRed with script AqaraPost-Homeassistant for integration Aqara G3 Camera.*
-
-## Requires
-NodeRed-Companion ( install from HACS )
-
-Username/Password Aqara Home app
-
-MAC address Camera G3
-
+  *Player m3u8 list or single video*
 
 ## Installation
 
 Add custom component remote repository:
-"https://github.com/sdavides/AqaraPOST-Homeassistant"
+"https://github.com/sdavides/m3u8-HLS-Homeassistant"
 
 
-   ![immagine](https://github.com/user-attachments/assets/1f100850-d7db-40ca-a036-97254154b408)
+![immagine](https://github.com/user-attachments/assets/1f100850-d7db-40ca-a036-97254154b408)
 
 
-## Setting
+## Configuration
 
-   ![immagine](https://github.com/user-attachments/assets/3d648c88-2b7d-4580-8e38-9d9ba3edfe7f)
+  * Playlist or Video (url type)
+  
+    * enable=playlist
+      
+     * disable=video
 
+  * http URL m3u
+
+  * Enable/Disable fields
+
+  or create playlist "file.m3u" on "/addon_configs/537fde62_m3u_player/"
 
 ## Update/Apply new config
 
-  * Delete "flow.json"
+  * Delete "file.m3u"
     
-    * ( usually into "/addon_configs/797fde71_nodered_aqara/" from SAMBA )
+    * ( usually into "/addon_configs/537fde62_m3u_player/" from SAMBA )
 
   * Update config
 
   * Restart addon
 
-## Verify install
+ 
+## Result
 
-  * Verify value into "config" node
-    
-    ![immagine](https://github.com/user-attachments/assets/ab2c21f0-0a85-4398-9d29-bfe4e29df13c)
-
+![immagine](https://github.com/user-attachments/assets/4d431123-cc07-4aec-bd4a-88bc0c2f7635)
