@@ -1,3 +1,17 @@
+----
+----
+
+#  M3uPlayer-Homeassistant addon #
+
+![images](https://github.com/user-attachments/assets/5a658414-ff3d-4546-a655-fbd2f124e968)
+
+
+  * [M3uPlayer addon](https://github.com/sdavides/m3u8-HLS-Homeassistant/tree/main/addon-M3uPlayer/README.md)
+  
+----
+
+----
+
 # m3u8-HLS-Homeassistant
 Goal: Play m3u8 media on HomeAssistant
 
