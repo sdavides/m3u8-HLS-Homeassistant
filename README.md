@@ -28,6 +28,7 @@ Goal: Play m3u8 media on HomeAssistant
 * player playlist
  
    Edit file.m3u playlist
+   Edit index.html, delete: style="display:none" for more fields
  
   
            type: iframe
