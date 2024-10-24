@@ -37,7 +37,17 @@ Add custom component remote repository:
 
   * Restart addon
 
- 
+
+## Example card:
+
+           type: iframe
+           url: ../537fde62_m3u_player
+           aspect_ratio: 100%
+
+     
 ## Result
 
 ![immagine](https://github.com/user-attachments/assets/4d431123-cc07-4aec-bd4a-88bc0c2f7635)
+
+![immagine](https://github.com/user-attachments/assets/b8aa32d7-1de8-4705-ae04-94cfbf6e83af)
+
