@@ -17,7 +17,9 @@ Goal: Play m3u8 media on HomeAssistant
 
   * Playlist or Video
 
-    *support m3u8, mpd, mp4, mov, webm*
+    *m3u8, mpd, mp4, mov, webm*
+    
+    *playlist m3u*
 
 
 ## Install ##
