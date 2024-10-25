@@ -187,13 +187,14 @@
         function updateVideoSource(url) {
             const videoPlayer = videojs('player');
 
-            if (url.includes('.mpd')) {
+            // Determine the type and handle accordingly
+            if (url.endsWith('.mpd')) {
                 const dashPlayer = dashjs.MediaPlayer().create();
                 dashPlayer.initialize(videoPlayer.tech().el(), url, true);
                 dashPlayer.on(dashjs.MediaPlayer.events.ERROR, function(e) {
                     console.error("DASH error: ", e);
                 });
-            } else if (url.includes('.m3u8')) {
+            } else if (url.endsWith('.m3u8')) {
                 if (Hls.isSupported()) {
                     const hls = new Hls();
                     hls.loadSource(url);
@@ -205,15 +206,24 @@
                     videoPlayer.src(url);
                     videoPlayer.play();
                 }
+            } else if (url.endsWith('.mp4')) {
+                videoPlayer.src({ type: 'video/mp4', src: url });
+            } else if (url.endsWith('.webm')) {
+                videoPlayer.src({ type: 'video/webm', src: url });
+            } else if (url.endsWith('.ts')) {
+                videoPlayer.src({ type: 'video/mp2t', src: url });
+            } else if (url.endsWith('.ogg')) {
+                videoPlayer.src({ type: 'video/ogg', src: url });
             } else {
-                videoPlayer.src({ type: 'application/x-mpegURL', src: url });
-                videoPlayer.load();
+                videoPlayer.src({ type: '', src: url });
             }
             
+            videoPlayer.load();
             videoPlayer.muted(isMuted);
             updateMuteButtonVisibility();
         }
 
+        // Event listeners for buttons and inputs
         document.getElementById('searchButton').addEventListener('click', function() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const filteredChannels = channels.filter(channel => 
@@ -225,13 +235,6 @@
         document.getElementById('resetButton').addEventListener('click', function() {
             document.getElementById('searchInput').value = '';
             populateChannelSelect(channels);
-        });
-
-        document.getElementById('searchInput').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                document.getElementById('searchButton').click();
-            }
         });
 
         document.getElementById('channelSelect').addEventListener('change', function() {
@@ -278,7 +281,7 @@
             }
         });
 
-        // Aggiungi un listener per il cambiamento del volume
+        // Volume change listener
         const videoPlayer = videojs('player');
         videoPlayer.on('volumechange', function() {
             isMuted = videoPlayer.muted();
