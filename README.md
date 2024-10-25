@@ -44,7 +44,7 @@ Goal: Play m3u8 media on HomeAssistant
   
            type: iframe
            url: /local/m3u8/index.html
-           aspect_ratio: 50%
+           aspect_ratio: 70%
       
 ## TIPS ##
 * Autoplay:
