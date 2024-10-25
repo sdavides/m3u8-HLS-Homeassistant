@@ -193,13 +193,24 @@
                 dashPlayer.on(dashjs.MediaPlayer.events.ERROR, function(e) {
                     console.error("DASH error: ", e);
                 });
+            } else if (url.includes('.m3u8')) {
+                if (Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(url);
+                    hls.attachMedia(videoPlayer.tech().el());
+                    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                        videoPlayer.play();
+                    });
+                } else if (videoPlayer.tech().el().canPlayType('application/vnd.apple.mpegurl')) {
+                    videoPlayer.src(url);
+                    videoPlayer.play();
+                }
             } else {
                 videoPlayer.src({ type: 'application/x-mpegURL', src: url });
                 videoPlayer.load();
-                videoPlayer.muted(isMuted);
             }
             
-            // Update button visibility based on mute status
+            videoPlayer.muted(isMuted);
             updateMuteButtonVisibility();
         }
 
@@ -232,7 +243,7 @@
             isMuted = !isMuted;
             const videoPlayer = videojs('player');
             videoPlayer.muted(isMuted);
-            this.textContent = isMuted ? 'Turn on Audio' : 'Turn on Audio';
+            this.textContent = isMuted ? 'Turn on Audio' : 'Mute Audio';
             updateMuteButtonVisibility();
         });
 
@@ -272,6 +283,13 @@
         videoPlayer.on('volumechange', function() {
             isMuted = videoPlayer.muted();
             updateMuteButtonVisibility();
+        });
+
+        // Error handling for Video.js
+        videoPlayer.on('error', function() {
+            const error = videoPlayer.error();
+            console.error('Video.js Error:', error);
+            alert('An error occurred while trying to play the video.');
         });
 
         // Initial call to set button visibility based on initial mute status
