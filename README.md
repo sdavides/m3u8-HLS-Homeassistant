@@ -27,7 +27,7 @@ Goal: Play m3u8 media on HomeAssistant
   
    Edit url src on index.html
 
-   delete: *style="display:none"* for more fields
+   add/delete *style="display:none"* for more/hide fields
 
    or create playlist on "file.m3u"
   
@@ -45,13 +45,10 @@ Goal: Play m3u8 media on HomeAssistant
 ## Test player ##
 * Open with browser:
      * http://'homeassistant'/local/m3u8_player/index.html
-     * http://'homeassistant'/local/m3u8/index.html
 
 
  ## Result ##
 ![immagine](https://github.com/user-attachments/assets/85d21159-13e2-4f85-8a0d-615381adbd87)
-
-
 
 
 ## See also ##
