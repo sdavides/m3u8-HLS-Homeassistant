@@ -4,7 +4,9 @@
     <meta charset="utf-8"/>
     <link href="./video-js.css" rel="stylesheet"/>
     <script src="./video.js"></script>
-	    <style>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <style>
         body {
             margin: 0;
             background-color: #333;
@@ -46,9 +48,9 @@
             padding: 5px 10px;
             cursor: pointer;
             position: absolute;
-            bottom: 50px; /* Spostato verso l'alto */
-            left: 50%; /* Centrato orizzontalmente */
-            transform: translateX(-50%); /* Centra il bottone */
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         #urlInput, #remoteUrlInput {
             margin: 5px;
@@ -80,17 +82,16 @@
             cursor: pointer;
         }
     </style>
-
 </head>
 <body>
 
     <div style="display: flex; align-items: center;">
-        <input type="text" id="searchInput" style="display:none" placeholder="Search..." style="margin: 5px;"/>
-        <button id="searchButton" style="display:none" class="button">Search</button>
-        <button id="resetButton" style="display:none" class="button">Reset</button>
+        <input type="text" id="searchInput" placeholder="Search..." style="margin: 5px;"/>
+        <button id="searchButton" class="button">Search</button>
+        <button id="resetButton" class="button">Reset</button>
     </div>
     
-    <select id="channelSelect" style="display:none">
+    <select id="channelSelect">
         <option value="">Select a channel</option>
     </select>
 
@@ -106,24 +107,23 @@
     </div>
 	
     <div>
-        <input type="file" id="fileInput" style="display:none" />
-        <button id="loadFileButton" style="display:none" >Load File</button>
+        <input type="file" id="fileInput"/>
+        <button id="loadFileButton">Load File</button>
     </div>
 
     <div>
-        <input type="text" id="urlInput" style="display:none" placeholder="Enter M3U URL video" />
-        <button id="loadUrlButton" style="display:none" >Load URL video</button>
+        <input type="text" id="urlInput" placeholder="Enter M3U URL video" />
+        <button id="loadUrlButton">Load URL video</button>
     </div>
 
     <div>
-        <input type="text" id="remoteUrlInput" style="display:none" placeholder="Enter M3U URL list" />
-        <button id="loadRemoteUrlButton" style="display:none" >Load URL list</button>
+        <input type="text" id="remoteUrlInput" placeholder="Enter M3U URL list" />
+        <button id="loadRemoteUrlButton">Load URL list</button>
     </div>
 
     <script>
         let channels = [];
         let isMuted = true;
-        let controlTimer;
 
         fetch('./file.m3u')
             .then(response => response.text())
@@ -177,22 +177,30 @@
                 select.value = '';
                 updateVideoSource('');
             }
+        }
 
-            updateSuggestion(filteredChannels.length);
+        function updateMuteButtonVisibility() {
+            const muteButton = document.getElementById('muteButton');
+            muteButton.classList.toggle('hidden', !isMuted);
         }
 
         function updateVideoSource(url) {
-            const videoSource = document.getElementById('videoSource');
-            videoSource.src = url;
             const videoPlayer = videojs('player');
-            videoPlayer.src({ type: 'application/x-mpegURL', src: url });
-            videoPlayer.load();
-            videoPlayer.muted(isMuted);
-        }
 
-        function updateSuggestion(count) {
-            const suggestionDiv = document.getElementById('suggestion');
-            suggestionDiv.textContent = count === 0 ? 'No channels found.' : `${count} trovato/i`;
+            if (url.includes('.mpd')) {
+                const dashPlayer = dashjs.MediaPlayer().create();
+                dashPlayer.initialize(videoPlayer.tech().el(), url, true);
+                dashPlayer.on(dashjs.MediaPlayer.events.ERROR, function(e) {
+                    console.error("DASH error: ", e);
+                });
+            } else {
+                videoPlayer.src({ type: 'application/x-mpegURL', src: url });
+                videoPlayer.load();
+                videoPlayer.muted(isMuted);
+            }
+            
+            // Update button visibility based on mute status
+            updateMuteButtonVisibility();
         }
 
         document.getElementById('searchButton').addEventListener('click', function() {
@@ -205,13 +213,13 @@
 
         document.getElementById('resetButton').addEventListener('click', function() {
             document.getElementById('searchInput').value = '';
-            populateChannelSelect(channels); // Ripristina tutti i canali
+            populateChannelSelect(channels);
         });
 
         document.getElementById('searchInput').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
-                event.preventDefault(); // Evita l'invio del modulo
-                document.getElementById('searchButton').click(); // Simula il click sul bottone di ricerca
+                event.preventDefault();
+                document.getElementById('searchButton').click();
             }
         });
 
@@ -224,10 +232,8 @@
             isMuted = !isMuted;
             const videoPlayer = videojs('player');
             videoPlayer.muted(isMuted);
-            if (!isMuted) {
-                this.style.display = 'none'; // Hide the button when sound is activated
-            }
-            this.textContent = isMuted ? 'Turn on Audio' : 'Turn off Audio';
+            this.textContent = isMuted ? 'Turn on Audio' : 'Turn on Audio';
+            updateMuteButtonVisibility();
         });
 
         document.getElementById('loadUrlButton').addEventListener('click', function() {
@@ -261,8 +267,15 @@
             }
         });
 
+        // Aggiungi un listener per il cambiamento del volume
+        const videoPlayer = videojs('player');
+        videoPlayer.on('volumechange', function() {
+            isMuted = videoPlayer.muted();
+            updateMuteButtonVisibility();
+        });
 
-
+        // Initial call to set button visibility based on initial mute status
+        updateMuteButtonVisibility();
     </script>
     
 </body>
