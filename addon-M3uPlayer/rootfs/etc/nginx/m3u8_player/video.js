@@ -63870,8 +63870,8 @@
       var nextPlaylist = this.selectPlaylist();
 
       if (!nextPlaylist) {
-        this.error = 'Playback cannot continue. No available working or supported playlists.';
-        this.trigger('error');
+        //this.error = 'Playback cannot continue. No available working or supported playlists.';
+        //this.trigger('error');
         return;
       }
 
