@@ -86,12 +86,12 @@
 <body>
 
     <div style="display: flex; align-items: center;">
-        <input type="text" id="searchInput" placeholder="Search..." style="margin: 5px;"/>
-        <button id="searchButton" class="button">Search</button>
-        <button id="resetButton" class="button">Reset</button>
+        <input type="text" id="searchInput" style="display:none" placeholder="Search..." style="margin: 5px;"/>
+        <button id="searchButton" style="display:none" class="button">Search</button>
+        <button id="resetButton" style="display:none" class="button">Reset</button>
     </div>
     
-    <select id="channelSelect">
+    <select id="channelSelect" style="display:none" >
         <option value="">Select a channel</option>
     </select>
 
@@ -107,18 +107,18 @@
     </div>
 	
     <div>
-        <input type="file" id="fileInput"/>
-        <button id="loadFileButton">Load File</button>
+        <input type="file" id="fileInput" style="display:none" />
+        <button id="loadFileButton" style="display:none" >Load File</button>
     </div>
 
     <div>
-        <input type="text" id="urlInput" placeholder="Enter M3U URL video" />
-        <button id="loadUrlButton">Load URL video</button>
+        <input type="text" id="urlInput" style="display:none" placeholder="Enter M3U URL video" />
+        <button id="loadUrlButton" style="display:none" >Load URL video</button>
     </div>
 
     <div>
-        <input type="text" id="remoteUrlInput" placeholder="Enter M3U URL list" />
-        <button id="loadRemoteUrlButton">Load URL list</button>
+        <input type="text" id="remoteUrlInput" style="display:none" placeholder="Enter M3U URL list" />
+        <button id="loadRemoteUrlButton" style="display:none" >Load URL list</button>
     </div>
 
     <script>
