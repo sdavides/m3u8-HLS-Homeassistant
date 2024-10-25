@@ -1,8 +1,12 @@
 # M3uPlayer addon HomeAssistant
 
-  M3uPlayer Homeassistant.
+  M3uPlayer
 
-  *Player m3u8 list or single video*
+    * Playlist or Video
+
+    *m3u8, mpd, mp4, mov, webm*
+    
+    *playlist m3u*
 
 ## Installation
 
