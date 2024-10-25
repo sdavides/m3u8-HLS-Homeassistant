@@ -1,5 +1,11 @@
 #EXTM3U
-#EXTINF:-1,Test video01
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8
-#EXTINF:-1,Test video02
+#EXTINF:-1,[1] test m3u8
 https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1,[2] test webm
+https://dl11.webmfiles.org/big-buck-bunny_trailer.webm
+#EXTINF:-1,[3] test mov
+https://download.blender.org/peach/trailer/trailer_480p.mov
+#EXTINF:-1,[4] test mp4
+https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4
+#EXTINF:-1,[5] test mpd
+https://dash.akamaized.net/dash264/TestCases/2c/qualcomm/1/MultiResMPEG2.mpd
