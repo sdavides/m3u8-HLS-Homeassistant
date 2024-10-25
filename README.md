@@ -19,32 +19,18 @@ Goal: Play m3u8 media on HomeAssistant
 
 
 ## Install ##
-* Download folder on /config/www/
+* Download folder "m3u8_player" on /config/www/
+  
+   Edit url src on index.html
 
-     * "m3u8_player" playlist m3u
-  
-     * "m3u8" single video 
-  
-* player playlist
- 
-   Edit file.m3u playlist
-  
-   Edit index.html, delete: style="display:none" for more fields
- 
+   delete: *style="display:none"* for more fields
+
+   or create playlist on "file.m3u"
   
            type: iframe
            url: /local/m3u8_player/index.html
            aspect_ratio: 70%
 
-
-* single video
- 
-   Edit url src on index.html
- 
-  
-           type: iframe
-           url: /local/m3u8/index.html
-           aspect_ratio: 70%
       
 ## TIPS ##
 * Autoplay:
