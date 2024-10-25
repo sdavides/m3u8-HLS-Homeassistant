@@ -86,12 +86,12 @@
 <body>
 
     <div style="display: flex; align-items: center;">
-        <input type="text" id="searchInput" style="display:none" placeholder="Search..." style="margin: 5px;"/>
-        <button id="searchButton" style="display:none" class="button">Search</button>
-        <button id="resetButton" style="display:none" class="button">Reset</button>
+        <input type="text" id="searchInput" placeholder="Search..." style="margin: 5px;"/>
+        <button id="searchButton" class="button">Search</button>
+        <button id="resetButton" class="button">Reset</button>
     </div>
     
-    <select id="channelSelect" style="display:none" >
+    <select id="channelSelect">
         <option value="">Select a channel</option>
     </select>
 
@@ -107,18 +107,18 @@
     </div>
 	
     <div>
-        <input type="file" id="fileInput" style="display:none" />
-        <button id="loadFileButton" style="display:none" >Load File</button>
+        <input type="file" id="fileInput"/>
+        <button id="loadFileButton">Load File</button>
     </div>
 
     <div>
-        <input type="text" id="urlInput" style="display:none" placeholder="Enter M3U URL video" />
-        <button id="loadUrlButton" style="display:none" >Load URL video</button>
+        <input type="text" id="urlInput" placeholder="Enter M3U URL video" />
+        <button id="loadUrlButton">Load URL video</button>
     </div>
 
     <div>
-        <input type="text" id="remoteUrlInput" style="display:none" placeholder="Enter M3U URL list" />
-        <button id="loadRemoteUrlButton" style="display:none" >Load URL list</button>
+        <input type="text" id="remoteUrlInput" placeholder="Enter M3U URL list" />
+        <button id="loadRemoteUrlButton">Load URL list</button>
     </div>
 
     <script>
@@ -193,13 +193,24 @@
                 dashPlayer.on(dashjs.MediaPlayer.events.ERROR, function(e) {
                     console.error("DASH error: ", e);
                 });
+            } else if (url.includes('.m3u8')) {
+                if (Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(url);
+                    hls.attachMedia(videoPlayer.tech().el());
+                    hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                        videoPlayer.play();
+                    });
+                } else if (videoPlayer.tech().el().canPlayType('application/vnd.apple.mpegurl')) {
+                    videoPlayer.src(url);
+                    videoPlayer.play();
+                }
             } else {
                 videoPlayer.src({ type: 'application/x-mpegURL', src: url });
                 videoPlayer.load();
-                videoPlayer.muted(isMuted);
             }
             
-            // Update button visibility based on mute status
+            videoPlayer.muted(isMuted);
             updateMuteButtonVisibility();
         }
 
@@ -232,7 +243,7 @@
             isMuted = !isMuted;
             const videoPlayer = videojs('player');
             videoPlayer.muted(isMuted);
-            this.textContent = isMuted ? 'Turn on Audio' : 'Turn on Audio';
+            this.textContent = isMuted ? 'Turn on Audio' : 'Mute Audio';
             updateMuteButtonVisibility();
         });
 
@@ -272,6 +283,13 @@
         videoPlayer.on('volumechange', function() {
             isMuted = videoPlayer.muted();
             updateMuteButtonVisibility();
+        });
+
+        // Error handling for Video.js
+        videoPlayer.on('error', function() {
+            const error = videoPlayer.error();
+            console.error('Video.js Error:', error);
+            alert('An error occurred while trying to play the video.');
         });
 
         // Initial call to set button visibility based on initial mute status
