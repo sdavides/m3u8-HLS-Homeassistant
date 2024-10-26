@@ -8,7 +8,7 @@ configuration:
     name: URL
     description: >-
       Note: 
-      delete "/addon_config/537fde62_m3u_player/file.m3u" to apply changed,
+      delete "/addon_config/4d8e746b_m3u_player/file.m3u" to apply changed,
       you can also edit "file.m3u", restart add-on to apply.
   searchInput:
     name: searchInput
