@@ -2,11 +2,11 @@
 
   M3uPlayer
 
-    * Playlist or Video
+   * Playlist or Video
 
-    *m3u8, mpd, mp4, mov, webm*
+      *m3u8, mpd, mp4, mov, webm*
     
-    *playlist m3u*
+      *playlist m3u*
 
 ## Installation
 
