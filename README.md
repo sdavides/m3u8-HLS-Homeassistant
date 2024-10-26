@@ -25,7 +25,7 @@ Goal: Play m3u8 media on HomeAssistant
 ## Install ##
 * Download folder "m3u8_player" on /config/www/
 
-   * add/delete *style="display:none"* for more/hide fields
+   * add/delete *style="display:none"* on "index.html" for more/hide fields
 
    create playlist on "file.m3u"
 
