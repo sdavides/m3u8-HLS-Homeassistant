@@ -25,7 +25,7 @@ Add custom component remote repository:
       
      * disable=video
 
-  * URL list/video m3u m3u8, mpd, mp4, mov, webm
+  * URL playlist/video m3u m3u8, mpd, mp4, mov, webm
     
   *^ ------- this creates the "file.m3u"*
 
