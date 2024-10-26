@@ -17,7 +17,7 @@ Add custom component remote repository:
 ![immagine](https://github.com/user-attachments/assets/1f100850-d7db-40ca-a036-97254154b408)
 
 
-## Configuration
+## Configuration 
 
   * Playlist or Video (url type)
   
@@ -25,11 +25,13 @@ Add custom component remote repository:
       
      * disable=video
 
-  * http URL m3u
+  * URL list/video m3u m3u8, mpd, mp4, mov, webm
+    
+  *^ ------- this creates the "file.m3u"*
 
   * Enable/Disable fields
 
-  or create playlist "file.m3u" on "/addon_configs/4d8e746b_m3u_player/"
+  or create manually "file.m3u" on "/addon_configs/4d8e746b_m3u_player/"
 
 ## Update/Apply new config
 
@@ -45,4 +47,3 @@ Add custom component remote repository:
 ## Result
 
 ![immagine](https://github.com/user-attachments/assets/4d431123-cc07-4aec-bd4a-88bc0c2f7635)
-
