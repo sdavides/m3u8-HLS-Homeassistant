@@ -29,13 +29,13 @@ Add custom component remote repository:
 
   * Enable/Disable fields
 
-  or create playlist "file.m3u" on "/addon_configs/537fde62_m3u_player/"
+  or create playlist "file.m3u" on "/addon_configs/4d8e746b_m3u_player/"
 
 ## Update/Apply new config
 
   * Delete "file.m3u"
     
-    * ( usually into "/addon_configs/537fde62_m3u_player/" from SAMBA )
+    * ( usually into "/addon_configs/4d8e746b_m3u_player/" from SAMBA )
 
   * Update config
 
