@@ -186,12 +186,7 @@
 
         function updateVideoSource(url, subtitlesUrl) {
             const videoPlayer = videojs('player');
-            const videoElement = videoPlayer.tech().el();
 
-            // Rimuovi la sorgente video esistente
-            	//videoElement.src = '';
-
-            // Carica la nuova sorgente												 
             if (url.endsWith('.mpd')) {
                 const dashPlayer = dashjs.MediaPlayer().create();
                 dashPlayer.initialize(videoPlayer.tech().el(), url, true);
@@ -217,7 +212,6 @@
                 videoPlayer.src({ type: '', src: url });
             }
 
-									 
             const subtitleTrack = document.getElementById('subtitleTrack');
             if (subtitlesUrl) {
                 subtitleTrack.src = subtitlesUrl;
@@ -271,9 +265,7 @@
             }
         });
 
-						
         document.getElementById('muteButton').addEventListener('click', function() {
-												  
             isMuted = !isMuted;
             const videoPlayer = videojs('player');
             videoPlayer.muted(isMuted);
