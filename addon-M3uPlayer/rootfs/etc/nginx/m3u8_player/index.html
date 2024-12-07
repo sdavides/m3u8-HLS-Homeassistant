@@ -222,14 +222,6 @@ data-setup="{}">
                 videoPlayer.src({ type: '', src: url });
             }
 
-            const subtitleTrack = document.getElementById('subtitleTrack');
-            if (subtitlesUrl) {
-                subtitleTrack.src = subtitlesUrl;
-                subtitleTrack.default = false;
-            } else {
-                subtitleTrack.src = '';
-            }
-
             videoPlayer.load();
             videoPlayer.muted(isMuted);
             updateMuteButtonVisibility();
