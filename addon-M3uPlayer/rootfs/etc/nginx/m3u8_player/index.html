@@ -96,17 +96,18 @@
         <option value="">Select a channel</option>
     </select>
 
-    <div id="videoContainer">
-        <video id="player" 
-               class="video-js" 
-               controls autoplay muted preload="auto"
-               poster="./play.png"
-               data-setup="{}">
-            <source id="videoSource" type="application/x-mpegURL" src="https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"/>
-            <track id="subtitleTrack" kind="subtitles" srclang="en" label="english" default="false" />
-        </video>
+<div id="videoContainer">
+<video id="player" 
+class="video-js" 
+controls muted autoplay preload="none"
+poster="./play.png"
+width="960" 
+height="420" 
+data-setup="{}">
+<source type="application/x-mpegURL" src="https://dash.akamaized.net/dash264/TestCases/2c/qualcomm/1/MultiResMPEG2.mpd">
+</video>
         <button id="muteButton">Turn on Audio</button>
-    </div>
+</div>
     
     <div>
         <input type="file" id="fileInput" style="display:none" />
@@ -186,21 +187,30 @@
 
         function updateVideoSource(url, subtitlesUrl) {
             const videoPlayer = videojs('player');
+            const videoElement = videoPlayer.tech().el();
+
+            // Rimuovi la sorgente video esistente
+            videoElement.src = '';
 
             if (url.endsWith('.mpd')) {
                 const dashPlayer = dashjs.MediaPlayer().create();
                 dashPlayer.initialize(videoPlayer.tech().el(), url, true);
-            } else if (url.endsWith('.m3u8')) {
-                if (Hls.isSupported()) {
+            } else if (url.endsWith('.m3u8') || url.endsWith('.m3u')) {
+                // Prima prova con Video.js
+                if (videoPlayer.canPlayType('application/x-mpegURL')) {
+                    videoPlayer.src(url);
+                    videoPlayer.play();
+                } else if (Hls.isSupported()) {
+                    // Se Video.js non può gestire il flusso, prova con HLS.js
                     const hls = new Hls();
                     hls.loadSource(url);
                     hls.attachMedia(videoPlayer.tech().el());
                     hls.on(Hls.Events.MANIFEST_PARSED, function() {
                         videoPlayer.play();
                     });
-                } else if (videoPlayer.tech().el().canPlayType('application/vnd.apple.mpegurl')) {
-                    videoPlayer.src(url);
-                    videoPlayer.play();
+                } else {
+                    console.error('Neither Video.js nor HLS.js support this video stream.');
+				
                 }
             } else if (url.endsWith('.mp4')) {
                 videoPlayer.src({ type: 'video/mp4', src: url });
