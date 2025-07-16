@@ -18,7 +18,7 @@ RUN \
     \
     && apk add --no-cache \
         git=2.49.1-r0 \
-        icu-data-full=76.1-r0 \
+        icu-data-full=76.1-r1 \
         nginx=1.28.0-r3 \
         openssh-client=10.0_p1-r7 \
         patch=2.8-r0 \
