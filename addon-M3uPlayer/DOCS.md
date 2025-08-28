@@ -19,25 +19,20 @@ Add custom component remote repository:
 
 ## Configuration 
 
-  * Playlist or Video (url type)
+  * Download file "/addon_config/xxx_m3u_player/file.m3u"
   
-    * enable=playlist
+    * Playlist  (ex. http://video.com/list.m3u8)
       
-     * disable=video
+     * Video (ex. http://video.com/video.mpd)
 
-  * URL playlist/video m3u m3u8, mpd, mp4, mov, webm
-    
-  *^ ------- this creates the "file.m3u"*
 
-  * Enable/Disable fields
-
-  or create manually "file.m3u" on "/addon_configs/4d8e746b_m3u_player/"
+  or create manually "/addon_configs/XXX_m3u_player/file.m3u"
 
 ## Update/Apply new config
 
   * Delete "file.m3u"
     
-    * ( usually into "/addon_configs/4d8e746b_m3u_player/" from SAMBA )
+    * ( usually into "/addon_configs/XXX_m3u_player/" from SAMBA )
 
   * Update config
 
@@ -47,4 +42,3 @@ Add custom component remote repository:
 ## Result
 
 ![immagine](https://github.com/user-attachments/assets/4d431123-cc07-4aec-bd4a-88bc0c2f7635)
-
