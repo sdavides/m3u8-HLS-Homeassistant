@@ -1,15 +1,19 @@
 ---
 configuration:
-  list_video:
-    name: Playlist or Video [enable=Playlist]
+  video_type:
+    name: Type file.m3u
     description: >-
-      Insert URL m3u video or playlist
+      Insert URL video or m3u playlist
   url_m3u:
     name: URL
     description: >-
       Note: 
-      delete "/addon_config/4d8e746b_m3u_player/file.m3u" to apply changed,
+      delete "/addon_config/xxx_m3u_player/file.m3u" to apply changed,
       you can also edit "file.m3u", restart add-on to apply.
+  renew_file:
+    name: renew_file
+    description: >-
+      Delete and download file.m3u on boot
   searchInput:
     name: searchInput
     description: >-
