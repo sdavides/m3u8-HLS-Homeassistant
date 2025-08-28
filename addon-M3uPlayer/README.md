@@ -17,7 +17,7 @@ Add custom component remote repository:
 ![immagine](https://github.com/user-attachments/assets/1f100850-d7db-40ca-a036-97254154b408)
 
 
-## Configuration 
+## Setting 
 
   * Download file "/addon_config/xxx_m3u_player/file.m3u"
   
