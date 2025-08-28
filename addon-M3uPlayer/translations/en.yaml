@@ -1,9 +1,10 @@
 ---
 configuration:
   video_type:
-    name: Type file.m3u
+    name: Download file "/addon_config/xxx_m3u_player/file.m3u"
     description: >-
-      Insert URL video or m3u playlist
+      Insert URL video or m3u playlist 
+        (ex. http://video.com/video.mpd or http://video.com/list.m3u8)
   url_m3u:
     name: URL
     description: >-
