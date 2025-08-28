@@ -6,38 +6,51 @@
 
 bashio::log.info "Starting NGinx..."
 
+if bashio::config.true 'renew_file'; then
+    rm /config/file.m3u && 	bashio::log.info "/config/file.m3u deleted"|| bashio::log.info "/config/file.m3u not deleted"
+
+	else
+	bashio::log.info "renew_file.m3u false"
+fi
+
+
+video_type=$(bashio::config 'video_type')
+url_m3u=$(bashio::config 'url_m3u')
 
 if  bashio::fs.file_exists '/config/file.m3u'; then
     bashio::log.info "file.m3u already exist, the file will not be updated from config"
 	
-else
-	cp /etc/nginx/m3u8_player/file.m3u /config/ &&  bashio::log.info "default file.m3u create ok..." || bashio::log.info "default file.m3u create error..."
-	
-	if bashio::config.has_value 'url_m3u'; then
-
-		if bashio::config.true "list_video"; then
-		
-		url_m3u=$(bashio::config 'url_m3u')
-	
-		wget -q $url_m3u --output-document=/config/file.m3u && dos2unix  /config/file.m3u &&  bashio::log.info "download file.m3u ok..." ||  bashio::log.info "download file.m3u error..."
+    else
     
-		bashio::log.info "M3u URL list set"
-	
-		else
-		
-			url_m3u=$(bashio::config 'url_m3u')
-	
-			echo "#EXTM3U" > /config/file.m3u
-			echo "#EXTINF:-1,video01" >> /config/file.m3u
-			echo $url_m3u >> /config/file.m3u
-			bashio::log.info "M3u URL single video set"
-
-		fi
-	
-	else
-	bashio::log.info "M3u URL not set..."
-
-	fi
+    if [ "$url_m3u" = "" ]; then
+    
+    bashio::log.info "M3u URL not set, use local file /config/file.m3u"
+    cp /etc/nginx/m3u8_player/file.m3u /config/ &&  bashio::log.info "default file.m3u create ok..." || bashio::log.info "default file.m3u create error..."
+    
+    else 
+    	
+        if [ "$video_type" = "playlist" ]; then
+        
+            url_m3u=$(bashio::config 'url_m3u')
+            wget -q $url_m3u --output-document=/config/file.m3u && dos2unix  /config/file.m3u &&  bashio::log.info "download file.m3u playlist ok..." ||  bashio::log.info "download playlist url error..."
+            
+            bashio::log.info "M3u URL playlist done"
+        	
+        fi
+        
+        if [ "$video_type" = "video" ]; then
+    
+    	url_m3u=$(bashio::config 'url_m3u')
+        wget -q $url_m3u --output-document=/config/file.m3u && dos2unix  /config/file.m3u &&  bashio::log.info "download video file.m3u ok..." ||  bashio::log.info "download video url error..." 
+        	
+        echo "#EXTM3U" > /config/file.m3u
+        echo "#EXTINF:-1,video01" >> /config/file.m3u
+        echo $url_m3u >> /config/file.m3u
+    	
+        bashio::log.info "URL single video done"
+    		
+        fi
+    fi
 	
 fi
 
