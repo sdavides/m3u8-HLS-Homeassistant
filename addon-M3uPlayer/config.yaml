@@ -1,10 +1,9 @@
 ---
 name: M3uPlayer
-version: dev
+version: 1.0
 slug: m3u_player
 description: M3uPlayer Homeassistant
 url: https://github.com/sdavides/m3u8-HLS-Homeassistant
-codenotary: codenotary@frenck.dev
 ingress: true
 ingress_port: 0
 ingress_stream: true
@@ -29,16 +28,18 @@ map:
   - share:rw
   - ssl
 options:
-  list_video: true
+  video_type: playlist
   url_m3u: ""
+  renew_file: false
   searchInput: false
   channelSelect: true
   fileInput: false
   urlInput: false
   remoteUrlInput: false
 schema:
-  list_video: bool?
+  video_type: list(playlist|video)?
   url_m3u: str
+  renew_file: bool?
   searchInput: bool?
   channelSelect: bool?
   fileInput: bool?
