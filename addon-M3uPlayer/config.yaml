@@ -1,6 +1,6 @@
 ---
 name: M3uPlayer
-version: 1.5
+version: 1.6
 slug: m3u_player
 description: M3uPlayer Homeassistant
 url: https://github.com/sdavides/m3u8-HLS-Homeassistant
