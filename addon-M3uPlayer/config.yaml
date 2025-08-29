@@ -38,7 +38,6 @@ options:
   remoteUrlInput: false
 schema:
   video_type: list(playlist|video)?
-  fix_resource_proxy_redirect: bool?
   url_m3u: str
   renew_file: bool?
   searchInput: bool?
