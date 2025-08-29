@@ -35,3 +35,7 @@ configuration:
     name: remoteUrlInput
     description: >-
       Enable/Disable remoteUrlInput
+  fix_resource_proxy_redirect: 
+    name: fix_resource_proxy_redirect
+    description: >-
+      Try fix resource: proxy_redirect $uri .$uri
