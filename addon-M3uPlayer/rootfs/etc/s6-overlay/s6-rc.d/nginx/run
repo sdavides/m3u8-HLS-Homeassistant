@@ -108,6 +108,16 @@ if bashio::config.true "fix_resource_proxy_redirect"; then
 sed -i 's/proxy_redirect/#proxy_redirect/g' /etc/nginx/includes/proxy_params.conf
 
 cat << 'EOF' >> /etc/nginx/includes/proxy_params.conf
+#FIX RESOURCE ON HASSIO
+sub_filter  'src="/' 'src="./';
+sub_filter  'href="/' 'href="./' ;
+sub_filter  'action="/' 'action="./';
+
+sub_filter  'src=\'/' 'src=\'./';
+sub_filter  'href=\'/' 'href=\'./' ;
+sub_filter  'action=\'/' 'action=\'./';
+
+sub_filter_once on;
 proxy_redirect $uri .$uri;
 EOF
 
