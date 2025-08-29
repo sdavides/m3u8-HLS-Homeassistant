@@ -1,6 +1,6 @@
 ---
 name: M3uPlayer
-version: 1.1
+version: 1.2
 slug: m3u_player
 description: M3uPlayer Homeassistant
 url: https://github.com/sdavides/m3u8-HLS-Homeassistant
@@ -38,6 +38,7 @@ options:
   remoteUrlInput: false
 schema:
   video_type: list(playlist|video)?
+  fix_resource_proxy_redirect: bool?
   url_m3u: str
   renew_file: bool?
   searchInput: bool?
