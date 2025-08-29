@@ -19,14 +19,13 @@ Add custom component remote repository:
 
 ## Setting 
 
-  * Download file "/addon_config/xxx_m3u_player/file.m3u"
-  
-    * Playlist  (ex. http://video.com/list.m3u8)
-      
-     * Video (ex. http://video.com/video.mpd)
+<img width="1129" height="901" alt="immagine" src="https://github.com/user-attachments/assets/2b22664c-993e-4697-ad0a-8bc05133b70f" />
 
+-
 
   or create manually "/addon_configs/XXX_m3u_player/file.m3u"
+
+  
 
 ## Update/Apply new config
 
