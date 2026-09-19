@@ -54,7 +54,7 @@ LABEL \
     maintainer="sdavides" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="sdavides" \
+    org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
     org.opencontainers.image.authors="sdavides" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.url="https://addons.community" \
