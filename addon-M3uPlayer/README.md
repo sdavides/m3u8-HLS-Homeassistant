@@ -31,7 +31,7 @@ Add custom component remote repository:
 
   * Delete "file.m3u"
     
-    * ( usually into "/addon_configs/XXX_m3u_player/" from SAMBA )
+    * ( usually into "/app_config/XXX_m3u_player/" from SAMBA )
 
   * Update config
 
