@@ -1,8 +1,10 @@
 server {
     {{ if not .ssl }}
     listen {{ .port }} default_server;
+    listen [::]:{{ .port }} default_server;
     {{ else }}
     listen {{ .port }} default_server ssl;
+    listen [::]:{{ .port }} default_server ssl;
     http2 on;
     {{ end }}
 
@@ -26,6 +28,9 @@ server {
     }
     {{ end }}
 
+    location /endpoint/ {
+        proxy_pass http://backend;
+    }
 
     location / {
         {{ if not .leave_front_door_open }}
@@ -33,5 +38,6 @@ server {
         auth_request_set $auth_status $upstream_status;
         {{ end }}
 
+        proxy_pass http://backend;
     }
 }
