@@ -20,7 +20,7 @@ host_network: true
 auth_api: true
 uart: true
 list_video_description:
-  80/tcp: Web interface Nginx external port
+  80/tcp: Web interface Nginx external port additonal (direct port)
 map:
   - app_config:rw
   - homeassistant_config:rw
