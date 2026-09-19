@@ -23,7 +23,7 @@ Add custom component remote repository:
 
 -
 
-  or create manually "/addon_configs/XXX_m3u_player/file.m3u"
+  or create manually "/app_config/XXX_m3u_player/file.m3u"
 
   
 
