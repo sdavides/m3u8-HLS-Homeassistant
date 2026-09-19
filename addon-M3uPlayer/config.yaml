@@ -22,7 +22,7 @@ uart: true
 list_video_description:
   80/tcp: Web interface Nginx external port
 map:
-  - addon_config:rw
+  - app_config:rw
   - homeassistant_config:rw
   - media:rw
   - share:rw
