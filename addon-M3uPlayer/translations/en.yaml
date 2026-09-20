@@ -1,7 +1,7 @@
 ---
 configuration:
   video_type:
-    name: Download file "/addon_config/xxx_m3u_player/file.m3u"
+    name: Download file "/app_config/xxx_m3u_player/file.m3u"
     description: >-
       Insert URL video or m3u playlist 
         (ex. http://video.com/video.mpd or http://video.com/list.m3u8)
@@ -9,7 +9,7 @@ configuration:
     name: URL
     description: >-
       Note: 
-      delete "/addon_config/xxx_m3u_player/file.m3u" to apply changed,
+      delete "/app_config/xxx_m3u_player/file.m3u" to apply changed,
       you can also edit "file.m3u", restart add-on to apply.
   renew_file:
     name: renew_file
